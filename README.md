@@ -1,4 +1,5 @@
 # Merge XML
+
 ## Content
 The idea of this file is that:
 Thinking about you are doing a object detection project and you have to label many object by yourself.
@@ -11,6 +12,10 @@ This file help you to merge those xml file. Lets say, in folder "2000..." below,
 However, these object are labeled by 2 different persons so they are in different folders.
 
 Use this file and BOOM, they are merged.
+
+### Prerequisites
+- Python
+- xml
 
 ## How to run
 Place the file outside of the root folder as follow,
