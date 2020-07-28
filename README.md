@@ -25,6 +25,6 @@ Run:
     python merge_xml.py -f "Folder-you-want-to-run-on"
     ```
 ## Usage
-python train_inpainting.py  [-h] 
-                            [--folder]
+python merge_xml.py     [-h] 
+                        [--folder]
 ```
