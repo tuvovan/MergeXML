@@ -20,6 +20,8 @@ Use this file and BOOM, they are merged.
 ## How to run
 Place the file outside of the root folder as follow,
 
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+
 Run: 
     ```
     python merge_xml.py -f "Folder-you-want-to-run-on"
