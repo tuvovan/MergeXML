@@ -25,6 +25,7 @@ Run:
     python merge_xml.py -f "Folder-you-want-to-run-on"
     ```
 ## Usage
+```
 python merge_xml.py     [-h] 
                         [--folder]
 ```
