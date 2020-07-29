@@ -51,7 +51,7 @@ def merge_xml(path_to_xml_1, list_path_to_xml_2, new_path):
 
 if __name__ == "__main__":
     args = argparse.ArgumentParser()
-    args.add_argument("-f", "--folder", default = "eye_data\\")
+    args.add_argument("-f", "--folder", default = "turbuhaler\\")
     # args.add_argument("-v", "--videoname")
     args = vars(args.parse_args())
     print(args["folder"])
@@ -70,7 +70,9 @@ if __name__ == "__main__":
 
             ### ----------------- ###
             dir_list = [x[0] for x in os.walk(os.path.join(args["folder"], d))]
-            dir_list = dir_list[1:-1]
+            merged_idx = dir_list.index(os.path.join(args["folder"], d, "merged"))
+            dir_list.pop(merged_idx)
+            dir_list = dir_list[1:]
             traversed = []
             for i in range(len(dir_list)):
                 # for j in range(i+1, len(dir_list)):
@@ -84,10 +86,11 @@ if __name__ == "__main__":
                             if not f.split('\\')[-1] in traversed:
                                 f2 = os.path.join(l, f.split('\\')[-1])
                                 list_to_merge.append(f2)
-                                traversed.append(f.split('\\')[-1])
+                                # traversed.append(f.split('\\')[-1])
                         else:
                             if not f.split('\\')[-1] in traversed:
-                                traversed.append(f.split('\\')[-1])
+                                # traversed.append(f.split('\\')[-1])
                                 copy(f, os.path.join(new_path, f.split('\\')[-1]))
+                    traversed.append(f.split('\\')[-1])
                     if len(list_to_merge) != 0:
                         merge_xml(f, list_to_merge, new_path)
