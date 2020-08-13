@@ -51,7 +51,7 @@ def merge_xml(path_to_xml_1, list_path_to_xml_2, new_path):
 
 if __name__ == "__main__":
     args = argparse.ArgumentParser()
-    args.add_argument("-f", "--folder", default = "turbuhaler\\")
+    args.add_argument("-f", "--folder", default = "nasal_spray\\")
     # args.add_argument("-v", "--videoname")
     args = vars(args.parse_args())
     print(args["folder"])
@@ -74,11 +74,13 @@ if __name__ == "__main__":
             dir_list.pop(merged_idx)
             dir_list = dir_list[1:]
             traversed = []
+            for f in dir_list:
+                for f in glob.glob(str(f) + "\\*xml"):
+                    shutil.copy(f, os.path.join(new_path, f.split('\\')[-1]))
+
             for i in range(len(dir_list)):
-                # for j in range(i+1, len(dir_list)):
                 path_1 = dir_list[i]
                 list_path_2 = dir_list[i+1:]
-
                 for f in glob.glob(str(path_1) + "\\*.xml"):
                     list_to_merge = []
                     for l in list_path_2:
