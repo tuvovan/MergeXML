@@ -54,14 +54,12 @@ if __name__ == "__main__":
     args.add_argument("-f", "--folder", default = "nasal_spray\\")
     # args.add_argument("-v", "--videoname")
     args = vars(args.parse_args())
-    print(args["folder"])
+    # print(args["folder"])
     list_dirs = os.listdir(args["folder"])
-    print(list_dirs)
+    # print(list_dirs)
     for d in list_dirs:
-        print(os.path.isdir(os.path.join(args["folder"], d)))
         if os.path.isdir(os.path.join(args["folder"], d)):
             new_path = os.path.join(args["folder"], d, "merged")
-            print(new_path)
             if os.path.exists(new_path):
                 shutil.rmtree(new_path)
                 os.makedirs(new_path)
@@ -70,15 +68,21 @@ if __name__ == "__main__":
 
             ### ----------------- ###
             dir_list = [x[0] for x in os.walk(os.path.join(args["folder"], d))]
+            # print(dir_list)
             merged_idx = dir_list.index(os.path.join(args["folder"], d, "merged"))
             dir_list.pop(merged_idx)
             dir_list = dir_list[1:]
+            # print(dir_list)
+            print("///")
             traversed = []
-            for f in dir_list:
-                for f in glob.glob(str(f) + "\\*xml"):
+            for folder in dir_list:
+                print(folder)
+                for f in glob.glob(str(folder) + "\\*.xml"):
+                    # print(f)
                     shutil.copy(f, os.path.join(new_path, f.split('\\')[-1]))
 
             for i in range(len(dir_list)):
+                # for j in range(i+1, len(dir_list)):
                 path_1 = dir_list[i]
                 list_path_2 = dir_list[i+1:]
                 for f in glob.glob(str(path_1) + "\\*.xml"):
